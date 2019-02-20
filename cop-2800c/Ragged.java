@@ -21,59 +21,60 @@ public class Ragged {
 
         }
         // Display the average for all exams by each Student ID
-        System.out.printf("----------------Averages by Student ID----------------\n");
+        System.out.printf("------------- Averages by Student ID -------------\n");
         for (int studentID = 0; studentID < classroom.length; ++studentID) {
             if (classroom[studentID] != null) { // there is a student at this index
                 studentAverage(studentID, classroom);
             }
         }
         // Display the average for each exam by Exam Number
-        System.out.printf("----------------Averages by Exam Number----------------\n");
+        System.out.printf("------------- Averages by Exam Number -------------\n");
         for (int examNum = 0; examNum < MAX_EXAMS; examNum++) {
             examAverage(examNum, classroom);
         }
         // Display the class average
+        System.out.printf("------------------ Class Average ------------------\n");
         classAverage(classroom);
 
         // Menu Program
-        String option = "quit"; System.out.print("\nWelcome to my menu! ");
-        
-        do { 
-        System.out.printf("-------------------------------- Menu ---------------------------------\n");
-        System.out.println("\n(1) Input grades" +
-        "\n(2) Display the average for all exams by each Student ID" +
-        "\n(3) Display the average for each exam by Exam Number" +
-        "\n(4) Display the class average");
-        System.out.printf("------------------- enter (quit) to exit this menu -------------------\n");
+        String option = "quit";
 
-        option = sc.next();
-        switch (option) { 
-            case "1": 
-            // The menu system will have an option to input grades for the next student.
-                inputGrade(classroom);
-                break;
-            case "2": 
-            // Menu will have an option to display the exam average by student.
-                System.out.printf("Which student ID are you looking to display?\n");
-                int studentID = sc.nextInt();
-                studentAverage(studentID, classroom);
-                break;
-            case "3":
-            // Menu will have an option to display the exam average by exam.
-                System.out.printf("Which student ID are you looking to display?\n");
-                int examNum = sc.nextInt();
-                examAverage(examNum, classroom);
-                break;
-            case "4":
-            // Menu will have an option to display the current class average for all exams.
-                classAverage(classroom);
-                break;
-            case "quit":
-                System.out.printf("Thank you for using my menu.\n");
-            default:
-                System.out.println("You entered an invaid option. Try again.");
-                break;
-            }
+        do { 
+            System.out.printf("---------------------- Menu -----------------------\n");
+            System.out.println("(1) Input grades" +
+            "\n(2) Display the average for all exams by each Student ID" +
+            "\n(3) Display the average for each exam by Exam Number" +
+            "\n(4) Display the class average");
+            System.out.printf("---------- enter (quit) to exit this menu ----------\n");
+
+            option = sc.next();
+            switch (option) { 
+                case "1": 
+                // The menu system will have an option to input grades for the next student.
+                    inputGrade(classroom);
+                    break;
+                case "2": 
+                // Menu will have an option to display the exam average by student.
+                    System.out.printf("Which student ID are you looking to display?\n");
+                    int studentID = sc.nextInt();
+                    studentAverage(studentID-1, classroom);
+                    break;
+                case "3":
+                // Menu will have an option to display the exam average by exam.
+                    System.out.printf("Which exam number are you looking to display?\n");
+                    int examNum = sc.nextInt();
+                    examAverage(examNum-1, classroom);
+                    break;
+                case "4":
+                // Menu will have an option to display the current class average for all exams.
+                    classAverage(classroom);
+                    break;
+                case "quit":
+                    System.out.printf("Thank you for using my menu ....\n");
+                default:
+                    System.out.println("You entered an invaid option. Try again.");
+                    break;
+                }
         }
         while (!option.equals("quit")); 
         sc.close();
@@ -86,7 +87,7 @@ public class Ragged {
             average += examGrade;
         }
         average /= classroom[studentID].length;
-        System.out.printf("Student %d %.2f\n", studentID + 1, average);
+        System.out.printf("Student %d: %.2f\n", studentID + 1, average);
     };
 
     private static void examAverage(int examNum, double[][] classroom) {
@@ -121,20 +122,21 @@ public class Ragged {
 
     private static boolean inputGrade(double[][] classroom){
         Scanner sc = new Scanner(System.in);
-        if(nextStudent(classroom) == -1){ //classroom is full
+        int newID = nextStudent(classroom);
+        if(newID== -1){ //classroom is full
             System.out.printf("This classroom is full, there are no more students able to be added!\n");
         }
 
         // Once pressed the user will then enter how many exams that student has taken.
         System.out.printf("How many exams has this student taken?\n");
         int exams = sc.nextInt();
+        classroom[newID] = new double[exams];
 
         // The program will then ask the user to enter each of those exam scores.
-        System.out.printf("Please enter the scores for each of those exams now....\n");
-        System.out.printf("....\n");
-        for(int examNum = 1; examNum <= exams; ++examNum){
-            System.out.printf("Exam %d: \n",examNum);
-            classroom[nextStudent(classroom)][examNum] = sc.nextDouble();
+        System.out.printf("Please enter the scores for each of those exams now ....\n");
+        for(int examNum = 0; examNum < exams; ++examNum){
+            System.out.printf("Exam %d: ",examNum+1);
+            classroom[newID][examNum] = sc.nextDouble();
         }
 
         return true;
