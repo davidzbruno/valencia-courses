@@ -36,20 +36,20 @@ public class Ragged {
         classAverage(classroom);
 
         // Menu Program
-        String option = "quit"; System.out.print("Welcome to my menu! ");
+        String option = "quit"; System.out.print("\nWelcome to my menu! ");
         
-        do { System.out.println("Please choose one of the followingg options:" +
-        "\n(1) Input grades" +
+        do { 
+        System.out.printf("-------------------------------- Menu ---------------------------------\n");
+        System.out.println("\n(1) Input grades" +
         "\n(2) Display the average for all exams by each Student ID" +
         "\n(3) Display the average for each exam by Exam Number" +
         "\n(4) Display the class average");
-        
+        System.out.printf("------------------- enter (quit) to exit this menu -------------------\n");
+
         option = sc.next();
         switch (option) { 
             case "1": 
             // The menu system will have an option to input grades for the next student.
-            // Once pressed the user will then enter how many exams that student has taken.
-            // The program will then ask the user to enter each of those exam scores.
                 inputGrade(classroom);
                 break;
             case "2": 
@@ -68,6 +68,8 @@ public class Ragged {
             // Menu will have an option to display the current class average for all exams.
                 classAverage(classroom);
                 break;
+            case "quit":
+                System.out.printf("Thank you for using my menu.\n");
             default:
                 System.out.println("You entered an invaid option. Try again.");
                 break;
@@ -116,5 +118,34 @@ public class Ragged {
         average /= exams;
         System.out.printf("Class Average: %.2f\n", average);
     }
+
+    private static boolean inputGrade(double[][] classroom){
+        Scanner sc = new Scanner(System.in);
+        if(nextStudent(classroom) == -1){ //classroom is full
+            System.out.printf("This classroom is full, there are no more students able to be added!\n");
+        }
+
+        // Once pressed the user will then enter how many exams that student has taken.
+        System.out.printf("How many exams has this student taken?\n");
+        int exams = sc.nextInt();
+
+        // The program will then ask the user to enter each of those exam scores.
+        System.out.printf("Please enter the scores for each of those exams now....\n");
+        System.out.printf("....\n");
+        for(int examNum = 1; examNum <= exams; ++examNum){
+            System.out.printf("Exam %d: \n",examNum);
+            classroom[nextStudent(classroom)][examNum] = sc.nextDouble();
+        }
+
+        return true;
+    }        
+
+    private static int nextStudent(double[][] classroom){ //returns the next empty student ID to be used or -1 if classroom is full
+        for(int studentID = 0; studentID < classroom.length; ++studentID) {
+            if(classroom[studentID] == null)
+                return studentID;
+        } 
+        return -1;
+    } 
 
 }
