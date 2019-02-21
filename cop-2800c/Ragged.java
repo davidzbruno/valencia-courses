@@ -13,10 +13,10 @@ public class Ragged {
 
         for (int studentID = 0, k = ran.nextInt(10) + 11; studentID < k; ++studentID) {
             int exams = ran.nextInt(8) + 2;
-            MAX_EXAMS = (MAX_EXAMS < exams) ? exams : MAX_EXAMS;// set the MAX_EXAMS variable
+            MAX_EXAMS = (MAX_EXAMS < exams) ? exams : MAX_EXAMS; // set the MAX_EXAMS variable
             classroom[studentID] = new double[exams];
-            for (int examNum = 0; examNum < classroom[studentID].length; ++examNum) {// adding exam scores
-                classroom[studentID][examNum] = ran.nextDouble()*50 + 50.0; // ignore expanded decimal format
+            for (int examNum = 0; examNum < classroom[studentID].length; ++examNum) { // adding exam scores
+                classroom[studentID][examNum] = ran.nextDouble()*50 + 50.0; //ignore expanded decimal format
             }
 
         }
@@ -113,7 +113,6 @@ public class Ragged {
                     exams++;
                 }
             }
-
         }
 
         average /= exams;
