@@ -25,19 +25,19 @@ public class Person{
     }
     public void setName(String fullName){
         String temp[] = fullName.split(" ");
-        name = (temp.length > 2) ? new Name(temp[0],temp[1]) : new Name(temp[0],temp[1],temp[2]);
+        name = (temp.length < 3) ? new Name(temp[0],temp[1]) : new Name(temp[0],temp[1],temp[2]);
     }
     public char getGender(){
         return gender;
     }
     public void setGender(char gender){
-        gender = Character.toUpper(gender);
+        gender = Character.toUpperCase(gender);
         if( gender == 'M' || gender == 'F' )
             this.gender = gender;
         else
             System.out.println("Gender must equal M or F only.");
     }
-    public char getAge(){
+    public int getAge(){
         return age;
     }
     public void setAge(int age){
@@ -46,7 +46,7 @@ public class Person{
         else
             System.out.println("Age must be between 1 and 120.");
     }
-    public char getSalary(){
+    public double getSalary(){
         return salary;
     }
     public void setSalary(double salary){
@@ -62,4 +62,14 @@ public class Person{
         return name + ", " + gender + ", " + age + ", $" + df.format(salary);
     }
     
+    @Override
+    public boolean equals(Object obj){
+        // If the object is compared with itself then return true   
+        if (obj == this) { 
+            return true; 
+        }
+
+        return false;
+
+    }
 }
