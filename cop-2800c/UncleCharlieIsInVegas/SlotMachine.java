@@ -18,7 +18,7 @@ public class SlotMachine {
         setWins(numWins);
         setPayOut(payOut);
     }
-
+    
     public String getName(){
         return nameOfSlot;
     }
