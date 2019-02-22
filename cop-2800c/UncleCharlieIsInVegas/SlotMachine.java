@@ -1,3 +1,5 @@
+import java.text.DecimalFormat;
+
 /*
 * File: SlotMachine.java
 * Name: David Bruno
@@ -6,56 +8,93 @@
 
 public class SlotMachine {
     private String nameOfSlot;
-    private double balance;
+    private int balance;
     private int numJackpots;
+    private int jackpotPayout;
     private int numWins;
-    private double payOut;
+    private int payout;
+    private int plays;
 
-    public SlotMachine(String nameOfSlot, double balance, int numJackpots, int numWins, double payOut){
+    public SlotMachine(String nameOfSlot, int balance, int numJackpots, int jackpotPayout, int numWins, int payout) {
         setName(nameOfSlot);
         setBalance(balance);
         setJackpots(numJackpots);
+        setJackpotPayout(jackpotPayout);
         setWins(numWins);
-        setPayOut(payOut);
+        setPayout(payout);
     }
 
-    public String getName(){
+    public boolean isEnough(double testAmount){
+        return getBalance() > testAmount;
+    }
+
+    public boolean isJackpot(){
+        return (plays % numJackpots == 0);
+    }
+
+    public boolean isWin(){
+        return (plays % numWins == 0);
+    }
+
+    public String getName() {
         return nameOfSlot;
     }
 
-    public double getBalance(){
+    public int getBalance() {
         return balance;
     }
 
-    public int getNumJackpots(){
+    public int getNumJackpots() {
         return numJackpots;
     }
 
-    public int getNumWins(){
+    public int getJackpotPayout() {
+        return jackpotPayout;
+    }
+
+    public int getNumWins() {
         return numWins;
     }
 
-    public double getPayOut(){
-        return payOut;
+    public int getPayout() {
+        return payout;
     }
 
-    public void setName(String nameOfSlot){
+    public int getPlays() {
+        return plays;
+    }
+
+    public void setName(String nameOfSlot) {
         this.nameOfSlot = nameOfSlot;
     }
 
-    public void setBalance(double balance){
+    public void setBalance(int balance) {
         this.balance = balance;
     }
 
-    public void setJackpots(int numJackpots){
+    public void setJackpots(int numJackpots) {
         this.numJackpots = numJackpots;
     }
 
-    public void setWins(int numWins){
+    public void setJackpotPayout(int jackpotPayout) {
+        this.jackpotPayout = jackpotPayout;
+    }
+
+    public void setWins(int numWins) {
         this.numWins = numWins;
     }
-    
-    public void setPayOut(double payOut){
-        this.payOut = payOut;
+
+    public void setPayout(int payout) {
+        this.payout = payout;
+    }
+
+    public void setPlays(int plays) {
+        this.plays = plays;
+    }
+
+    @Override
+    public String toString(){
+        DecimalFormat df = new DecimalFormat("$###,###,###,##0.00");
+        return nameOfSlot + ", " + df.format(balance) + ", Plays: " + plays;
     }
 }

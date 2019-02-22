@@ -12,7 +12,7 @@ public class Name{
     private String lastName;
 
     public Name(String fullName) {
-        String temp[] = fullName.trim().split(" ");
+        String temp[] = fullName.split(" ");
         if (temp.length < 3){
             setFirstName(temp[0]);
             setLastName(temp[1]);
@@ -26,7 +26,6 @@ public class Name{
     public Name(String firstName, String lastName) {
         this.setFirstName(firstName);
         this.setLastName(lastName);
-        middleInitial = 365;
     }
 
     public Name(String firstName, char middleInitial, String lastName) {
@@ -48,8 +47,11 @@ public class Name{
         return middleInitial;
     }
 
-    public void setMiddleInitial(char middleInitial) {
-        this.middleInitial = middleInitial;
+    public void setMiddleInitial(char mi) {
+        if(Character.isAlphabetic(mi))
+            this.middleInitial = Character.toUpperCase(mi);
+        else
+            System.out.println("Invalid entry.");
     }
 
     public String getLastName() {
@@ -62,8 +64,9 @@ public class Name{
 
     @Override
     public String toString() {
-        if (middleInitial != 365)
+        if (Character.isAlphabetic(middleInitial)){
             return (firstName + " " + middleInitial + ". " + lastName);
+        }
         return (firstName + " " + lastName);
     }
 

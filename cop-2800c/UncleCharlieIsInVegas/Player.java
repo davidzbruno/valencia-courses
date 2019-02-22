@@ -9,9 +9,9 @@ import java.text.DecimalFormat;
 public class Player{
     private Name name;
     private Date dateOfBirth;
-    private double moneyBalance;
+    private int moneyBalance;
 
-    public Player(String name, Date dateOfBirth, double moneyBalance){
+    public Player(String name, String dateOfBirth, int moneyBalance){
         setName(name);
         setDOB(dateOfBirth);
         setBalance(moneyBalance);
@@ -25,7 +25,7 @@ public class Player{
         return dateOfBirth;
     }
 
-    public double getBalance(){
+    public int getBalance(){
         return moneyBalance;
     }
 
@@ -37,10 +37,16 @@ public class Player{
         this.dateOfBirth = new Date(dateOfBirth);
     }
 
-    public void setBalance(Double moneyBalance){
+    public void setBalance(int moneyBalance){
         this.moneyBalance = moneyBalance;
     }
     
+    public void play(SlotMachine machine){
+        this.moneyBalance--;
+        machine.setBalance(machine.getBalance() + 1);
+        machine.setPlays(machine.getPlays() + 1);
+    }
+
     @Override
     public String toString(){
         DecimalFormat df = new DecimalFormat("$###,###,###,##0.00");
