@@ -7,7 +7,10 @@ public class Name{
 
     public Name(String fullName) {
         String temp[] = fullName.split(" ");
-        (temp.length < 3) ? new this(temp[0],temp[1]) : new this(temp[0],temp[1],temp[2]);
+        if (temp.length < 3)
+            Name(temp[0],temp[1]);
+        else
+            Name(temp[0],temp[1],temp[2]);
     }
 
     public Name(String firstName, String lastName) {

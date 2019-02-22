@@ -1,3 +1,5 @@
+import java.text.DecimalFormat;
+
 /*
 * File: Player.java
 * Name: David Bruno
@@ -6,10 +8,10 @@
 
 public class Player{
     private Name name;
-    private String dateOfBirth;
+    private Date dateOfBirth;
     private double moneyBalance;
 
-    public Player(Name name, String dateOfBirth, double moneyBalance){
+    public Player(Name name, Date dateOfBirth, double moneyBalance){
         setName(name);
         setDOB(dateOfBirth);
         setBalance(moneyBalance);
@@ -19,7 +21,7 @@ public class Player{
         return name;
     }
 
-    public String getDOB(){
+    public Date getDOB(){
         return dateOfBirth;
     }
 
@@ -32,11 +34,17 @@ public class Player{
     }
 
     public void setDOB(String dateOfBirth){
-        this.dateOfBirth = dateOfBirth;
+        this.dateOfBirth = new Date(dateOfBirth);
     }
 
     public void setBalance(Double moneyBalance){
         this.moneyBalance = moneyBalance;
+    }
+    
+    @Override
+    public String toString(){
+        DecimalFormat df = new DecimalFormat("$###,###,###,##0.00");
+        return name + ", " + dateOfBirth + ", " + df.format(moneyBalance);
     }
 
 }
