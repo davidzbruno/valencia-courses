@@ -18,13 +18,13 @@ public class SlotMachine {
         setWins(numWins);
         setPayOut(payOut);
     }
-    
+
     public String getName(){
         return nameOfSlot;
     }
 
     public double getBalance(){
-        return currBalance;
+        return balance;
     }
 
     public int getNumJackpots(){
