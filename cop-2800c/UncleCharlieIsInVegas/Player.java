@@ -11,7 +11,7 @@ public class Player{
     private Date dateOfBirth;
     private double moneyBalance;
 
-    public Player(Name name, Date dateOfBirth, double moneyBalance){
+    public Player(String name, Date dateOfBirth, double moneyBalance){
         setName(name);
         setDOB(dateOfBirth);
         setBalance(moneyBalance);

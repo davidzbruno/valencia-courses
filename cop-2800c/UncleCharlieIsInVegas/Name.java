@@ -1,12 +1,18 @@
 import java.util.*;
 
+/*
+* File: Name.java
+* Name: David Bruno
+* Date: 2/21/19
+*/
+
 public class Name{
     private String firstName;
-    private String middleName;
+    private char middleInitial;
     private String lastName;
 
     public Name(String fullName) {
-        String temp[] = fullName.split(" ");
+        String temp[] = fullName.trim().split(" ");
         if (temp.length < 3)
             Name(temp[0],temp[1]);
         else
@@ -16,12 +22,12 @@ public class Name{
     public Name(String firstName, String lastName) {
         this.setFirstName(firstName);
         this.setLastName(lastName);
-        middleName = "";
+        middleInitial = 365;
     }
 
-    public Name(String firstName, String middleName, String lastName) {
+    public Name(String firstName, char middleInitial, String lastName) {
         this.setFirstName(firstName);
-        this.setMiddleName(middleName);
+        this.setMiddleInitial(middleInitial);
         this.setLastName(lastName);
     }
 
@@ -34,12 +40,12 @@ public class Name{
         this.firstName = firstName;
     }
 
-    public String getMiddleName() {
-        return middleName;
+    public String getMiddleInitial() {
+        return middleInitial;
     }
 
-    public void setMiddleName(String middleName) {
-        this.middleName = middleName;
+    public void setMiddleInitial(char middleInitial) {
+        this.middleInitial = middleInitial;
     }
 
     public String getLastName() {
@@ -52,8 +58,8 @@ public class Name{
 
     @Override
     public String toString() {
-        if (middleName.length() > 0)
-            return (firstName + " " + middleName.charAt(0) + ". " + lastName);
+        if (middleInitial != 365)
+            return (firstName + " " + middleInitial + ". " + lastName);
         return (firstName + " " + lastName);
     }
 
@@ -70,7 +76,7 @@ public class Name{
 
         Name nObj = (Name) obj;
 
-        return this.getFirstName().equals(nObj.getFirstName()) && this.getMiddleName().equals(nObj.getMiddleName()) && this.getLastName().equals(nObj.getLastName());
+        return this.getFirstName().equals(nObj.getFirstName()) && this.getMiddleInitial == obj.getMiddleInitial() && this.getLastName().equals(nObj.getLastName());
         
     }
 }
