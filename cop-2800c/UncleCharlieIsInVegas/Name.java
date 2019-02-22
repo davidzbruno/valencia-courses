@@ -13,10 +13,14 @@ public class Name{
 
     public Name(String fullName) {
         String temp[] = fullName.trim().split(" ");
-        if (temp.length < 3)
-            Name(temp[0],temp[1]);
-        else
-            Name(temp[0],temp[1],temp[2]);
+        if (temp.length < 3){
+            setFirstName(temp[0]);
+            setLastName(temp[1]);
+        }else{
+            setFirstName(temp[0]);
+            setMiddleInitial(temp[1].charAt(0));
+            setLastName(temp[2]);
+        }
     }
 
     public Name(String firstName, String lastName) {
@@ -40,7 +44,7 @@ public class Name{
         this.firstName = firstName;
     }
 
-    public String getMiddleInitial() {
+    public char getMiddleInitial() {
         return middleInitial;
     }
 
@@ -75,8 +79,7 @@ public class Name{
         }
 
         Name nObj = (Name) obj;
-
-        return this.getFirstName().equals(nObj.getFirstName()) && this.getMiddleInitial == obj.getMiddleInitial() && this.getLastName().equals(nObj.getLastName());
+        return this.getFirstName().equals(nObj.getFirstName()) && this.getMiddleInitial() == nObj.getMiddleInitial() && this.getLastName().equals(nObj.getLastName());
         
     }
 }
