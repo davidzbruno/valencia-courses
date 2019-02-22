@@ -5,6 +5,11 @@ public class Name{
     private String middleName;
     private String lastName;
 
+    public Name(String fullName) {
+        String temp[] = fullName.split(" ");
+        (temp.length < 3) ? new this(temp[0],temp[1]) : new this(temp[0],temp[1],temp[2]);
+    }
+
     public Name(String firstName, String lastName) {
         this.setFirstName(firstName);
         this.setLastName(lastName);
