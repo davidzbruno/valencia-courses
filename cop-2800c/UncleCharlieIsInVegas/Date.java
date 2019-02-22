@@ -24,7 +24,9 @@ public class Date {
             setYear(Integer.parseInt(temp[2]));
         } else {
             System.out.println("Invalid date. Using 1/1/2000.");
-            Date("1/1/2000");
+            setMonth(1);
+            setDay(1);
+            setYear(2000);
         }
     }
 
