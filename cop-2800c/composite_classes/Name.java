@@ -45,7 +45,7 @@ public class Name{
     @Override
     public String toString() {
         if (middleName.length() > 0)
-            return (firstName + middleName.charAt(0) + ". " + lastName);
+            return (firstName + " " + middleName.charAt(0) + ". " + lastName);
         return (firstName + " " + lastName);
     }
 
