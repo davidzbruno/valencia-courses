@@ -16,7 +16,7 @@ public class Name{
         if (temp.length < 3){
             setFirstName(temp[0]);
             setLastName(temp[1]);
-        }else{
+        }else{ 
             setFirstName(temp[0]);
             setMiddleInitial(temp[1].charAt(0));
             setLastName(temp[2]);

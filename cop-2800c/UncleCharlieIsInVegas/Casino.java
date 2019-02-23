@@ -23,8 +23,7 @@ public class Casino{
 
         String option = "exit";
         do{
-            System.out.println("Current Player: " + curPlayer.getName() + " $" + curPlayer.getBalance() + " Current Machine: " + curMachine.getName());
-            System.out.println("(1) Select a player (2) Select a machine (3) Add Player (4) Add Machine (5) Play");
+            display(curPlayer,curMachine);
             option = sc.next();
             int index = 0;
             switch(option){
@@ -40,7 +39,7 @@ public class Casino{
                     break;
                 case "2":
                     print(machines);
-                    System.out.println("Which player do you choose? ");
+                    System.out.println("Which machine do you choose? ");
                     index = sc.nextInt() - 1;
                     if(machines[index].getBalance() < machines[index].getPayout()){
                         System.out.println("This machine has insufficient funds. Pick a different machine.");
@@ -49,10 +48,10 @@ public class Casino{
                     curMachine = machines[index];
                     break;
                 case "3":
-                    // newPlayer();
+                    newPlayer(players);
                     break;
                 case "4":
-                    // newMachine();
+                    newMachine(machines);
                     break;
                 case "5":
                     play(curPlayer,curMachine);
@@ -66,6 +65,62 @@ public class Casino{
              }
         }while(!option.equals("exit"));
     }
+    public static void display(Player curPlayer, SlotMachine curMachine){
+        System.out.println("--------------------------------------------------------------------------------");
+        System.out.println("Current Player: " + curPlayer.getName() + " $" + curPlayer.getBalance() + " ---- Current Machine: " + curMachine.getName());
+        System.out.println("[1] Select a player [2] Select a machine [3] Add Player [4] Add Machine [5] Play [exit] Exit ");
+        System.out.println("--------------------------------------------------------------------------------");
+
+    }
+
+    public static int indexLast(Object[] arr){
+        for(int i = 0; i < arr.length; ++i){
+            if( arr[i] == null ) return i;
+        }
+        return -1;
+    }
+
+    public static void newPlayer(Player[] players){
+        if(indexLast(players) == -1){
+            System.out.println("The Casino is full. No more players can enter the casino.");
+            return;
+        }
+        
+        Scanner sc = new Scanner(System.in);
+        System.out.println("What is the first name of this new player?");
+        String firstName = sc.next();
+        System.out.println("What is the last name of this new player?");
+        String lastName = sc.next();
+        System.out.println("What is the DOB of this new player?");
+        String dateOfBirth = sc.next();
+        System.out.println("What is the money balance of this new player?");
+        int balance = sc.nextInt();
+
+        players[indexLast(players)] = new Player((firstName+" "+lastName), dateOfBirth, balance);
+    }
+
+    public static void newMachine(SlotMachine[] machines){
+        if(indexLast(machines) == -1){
+            System.out.println("The Casino is full. No more machines can be brought into the casino.");
+            return;
+        }
+        
+        Scanner sc = new Scanner(System.in);
+        System.out.println("What is the name of this slot?");
+        String name = sc.next();
+        System.out.println("What is the balance of this slot?");
+        int balance = sc.nextInt();
+        System.out.println("How many plays does it take for someone to win the jackpot?");
+        int numJackpots = sc.nextInt();
+        System.out.println("How many plays does it take for someone to win normally?");
+        int numWins = sc.nextInt();
+        System.out.println("What is the jackpot payout of this slot?");
+        int jackpotPayout = sc.nextInt();
+        System.out.println("What is the normal payout of this slot?");
+        int payout = sc.nextInt();
+
+        machines[indexLast(machines)] = new SlotMachine(name, balance, numJackpots,jackpotPayout, numWins, payout);
+    }
 
     public static void print(Object[] arr){
         for(int i = 0; i < arr.length; ++i){
@@ -76,6 +131,17 @@ public class Casino{
     }
 
     public static void play(Player player, SlotMachine machine){
+        Scanner sc = new Scanner(System.in);
+        String input = "0";
+        if(player.getBalance() < 1){
+            System.out.println("This player has insufficient funds. Pick a different player.");
+            return;
+        }
+        if(machine.getBalance() < machine.getPayout()){
+            System.out.println("This machine has insufficient funds. Pick a different machine.");
+            return;
+        }
+
         player.play(machine);
         
         if(machine.isJackpot()){
@@ -88,7 +154,12 @@ public class Casino{
             player.setBalance( player.getBalance() + machine.getPayout() );
             machine.setBalance( machine.getBalance() - machine.getPayout() );
         }else{
-            System.out.println("Sorry. Better luck next time " + player.getName());
+            System.out.println("Sorry. Better luck next time " + player.getName()+ ".");
         }
+
+        System.out.println("Do you want to play again? (y/n)");
+            input = sc.next();
+            if (input.toUpperCase().charAt(0) == 'Y')
+                play(player,machine);
     }
 }
