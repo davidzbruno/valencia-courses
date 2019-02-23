@@ -1,3 +1,8 @@
+/*
+* File: Cat.java
+* Name: David Bruno
+* Date: 2/22/19
+*/
 public class Cat extends Animal{
 
     private Name name;
@@ -24,10 +29,10 @@ public class Cat extends Animal{
         this.lives = lives;
     }
 
-    @Overrride
+    @Override
     public String toString(){
         String result;
-        result = "Cat: " + name + " Lives: " + this.getLives() + super.toString() + super.getWeight() + super.getHeight();
+        result = "(CAT) " + this.getName() + ", " + this.getLives() + " lives, " + super.toString();
         return result;
     }
 }

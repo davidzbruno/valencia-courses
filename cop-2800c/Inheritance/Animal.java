@@ -1,5 +1,10 @@
-public class Animal extends Object{
+/*
+* File: Animal.java
+* Name: David Bruno
+* Date: 2/22/19
+*/
 
+public class Animal extends Object{
     private int weight;
     private int height;
 
@@ -28,7 +33,7 @@ public class Animal extends Object{
     @Override
     public String toString(){
         String result;
-        result = " I am an animal weighting: " + weight + "and " + height + " inches.";
+        result = "(ANIMAL) " + weight + " lbs, " + height + "\'";
         return result;
 
     }

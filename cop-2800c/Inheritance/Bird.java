@@ -1,4 +1,11 @@
+/*
+* File: Bird.java
+* Name: David Bruno
+* Date: 2/22/19
+*/
+
 public class Bird extends Animal{
+    private Name name;
     private int wingspan;
     private boolean canFly;
 
@@ -28,10 +35,10 @@ public class Bird extends Animal{
         this.canFly = canFly;
     }
 
-    @Overrride
+    @Override
     public String toString(){
         String result;
-        result = "Bird: " + name + " Wingspan: " + this.getWingspan() + "Canfly: "+ this.getCanFly() + super.toString() + super.getWeight() + super.getHeight();
+        result = "(BIRD) " + this.getName() + ", " + this.getWingspan() + "\' wingspan, " + super.toString();
         return result;
     }
 }

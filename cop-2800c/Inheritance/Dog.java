@@ -35,10 +35,10 @@ public class Dog extends Animal{
         this.dateOfBirth = new DOB(dateOfBirth);
     }
 
-    @Overrride
+    @Override
     public String toString(){
         String result;
-        result = "Dog: " + name +  " Breed: " + this.getBreed() + " Date of birth: " + this.getDOB() + super.toString() + super.getWeight() + super.getHeight();
+        result = "(DOG) " + this.getName() +  ", " + this.getBreed() + ", " + this.getDOB() + ", " + super.toString();
         return result;
     }
 }
