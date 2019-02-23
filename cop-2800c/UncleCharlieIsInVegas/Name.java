@@ -47,9 +47,9 @@ public class Name{
         return middleInitial;
     }
 
-    public void setMiddleInitial(char mi) {
-        if(Character.isAlphabetic(mi))
-            this.middleInitial = Character.toUpperCase(mi);
+    public void setMiddleInitial(char middleInitial) {
+        if(Character.isAlphabetic(middleInitial))
+            this.middleInitial = Character.toUpperCase(middleInitial);
         else
             System.out.println("Invalid entry.");
     }

@@ -72,14 +72,12 @@ public class Casino{
         System.out.println("--------------------------------------------------------------------------------");
 
     }
-
     public static int indexLast(Object[] arr){
         for(int i = 0; i < arr.length; ++i){
             if( arr[i] == null ) return i;
         }
         return -1;
     }
-
     public static void newPlayer(Player[] players){
         if(indexLast(players) == -1){
             System.out.println("The Casino is full. No more players can enter the casino.");
@@ -98,7 +96,6 @@ public class Casino{
 
         players[indexLast(players)] = new Player((firstName+" "+lastName), dateOfBirth, balance);
     }
-
     public static void newMachine(SlotMachine[] machines){
         if(indexLast(machines) == -1){
             System.out.println("The Casino is full. No more machines can be brought into the casino.");
@@ -121,7 +118,6 @@ public class Casino{
 
         machines[indexLast(machines)] = new SlotMachine(name, balance, numJackpots,jackpotPayout, numWins, payout);
     }
-
     public static void print(Object[] arr){
         for(int i = 0; i < arr.length; ++i){
             if(arr[i] == null)
@@ -129,7 +125,6 @@ public class Casino{
             System.out.println("[" + (i+1) + "] " + arr[i]);
         }
     }
-
     public static void play(Player player, SlotMachine machine){
         Scanner sc = new Scanner(System.in);
         String input = "0";
