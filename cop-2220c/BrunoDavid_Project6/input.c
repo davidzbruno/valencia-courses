@@ -4,7 +4,7 @@ int main(void) {
    FILE* inFile = NULL; // File pointer
    int fileNum1;        // Data value from file
    int fileNum2;        // Data value from file
-
+ 
    // Try to open file
    printf("Opening file myfile.txt.\n");
    
@@ -29,4 +29,5 @@ int main(void) {
    printf("num1+num2 = %d\n", (fileNum1 + fileNum2));
    
    return 0;
+
 }
