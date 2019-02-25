@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <limits.h>
-
+//tseting to see if git works
 int main(void){
 
     // What is the the size of variables with the following C data types – int, long, unsigned, long long, char, float and double?
