@@ -209,7 +209,46 @@ void brightness(int offset, int imageArray[][MAX_WIDTH], int *height, int *width
         }
     }
 }
+void truncate(int imageArray[][MAX_WIDTH], int *height, int *width, double *tValue)
+{
+    int row = 0;
+    int col = 0;
+    for (row = 0; row < MIN(MAX_HEIGHT - 1, *height); ++row)
+    {
+        for (col = 0; col < MIN(MAX_WIDTH - 1, *width); ++col)
+        {
+            if (imageArray[row][col] < *tValue)
+            {
+                imageArray[row][col] = 0;
+            }
+            else
+            {
+                imageArray[row][col] = 255;
+            }
+        }
+    }
+}
+void crop(int imageArray[][MAX_WIDTH], int *height, int *width, double *tValue)
+{
+    int row = 0;
+    int col = 0;
 
+    //read starting point and size
+    int startingPoint[] = {0, 0};
+    int size[] = {0, 0};
+
+    printf("Enter starting point and size of cropped image: FORMAT: X,Y WIDTH,LENGTH ");
+    scanf("%d,%d %d,%d", &startingPoint[0], &startingPoint[1], &size[0], &size[1]);
+
+    for (row = 0; row < size[1]; ++row)
+    {
+        for (col = 0; col < size[0]; ++col)
+        {
+            printf("%-5d", imageArray[startingPoint[0] + row][startingPoint[1] + col]);
+        }
+        printf("\n");
+    }
+}
 int main(void)
 {
     int height = 0;
@@ -229,10 +268,10 @@ int main(void)
     // vary slightly)
     read_pgm_file_into_array(theImageArray, &height, &width, &maxPixel, &tValue, pgmInFileName);
 
-    //****
-    //**** Your code to transform the image goes here ...
-    //****
-    brightness(-5, theImageArray, &height, &width);
+    // Test
+    //brightness(50, theImageArray, &height, &width);
+    //truncate(theImageArray, &height, &width, &tValue);
+    crop(theImageArray, &height, &width, &tValue);
 
     //Transfer the current values in theImageArray back to disk
     write_pgm_file_from_array(pgmOutFileName, theImageArray, "# JR test file", height, width,
