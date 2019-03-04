@@ -1,4 +1,4 @@
-public class KabaddiPlayer extends InternationalPlayer implements Bangladesh {
+public class KabaddiPlayer extends InternationalAthlete implements Bangladesh {
     private boolean isRaider;
 
     public KabaddiPlayer(String name, int age, String team, String position, String country, String passport,
@@ -30,4 +30,20 @@ public class KabaddiPlayer extends InternationalPlayer implements Bangladesh {
     public void doThis() {
         System.out.println("I do whatever Kabiddi players do...");
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+
+        if (!(obj instanceof KabaddiPlayer)) {
+            return false;
+        }
+
+        KabaddiPlayer kObj = (KabaddiPlayer) obj;
+
+        return super.equals(obj) && this.getIsRaider() == kObj.getIsRaider();
+    }
+
 }

@@ -6,8 +6,8 @@
 
 public class Person {
     private Name name;
-    private int age; 
-    
+    private int age;
+
     public Person(String name, int age) {
         setName(name);
         setAge(age);
@@ -22,7 +22,7 @@ public class Person {
     }
 
     public void setName(String name) {
-        this.name = newName(name);
+        this.name = new Name(name);
     }
 
     public void setAge(int age) {

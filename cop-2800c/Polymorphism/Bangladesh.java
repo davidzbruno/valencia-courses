@@ -1,3 +1,3 @@
-public interface Bangladesh extends Comparable {
+public interface Bangladesh {
     void nationalAnthem();
 }

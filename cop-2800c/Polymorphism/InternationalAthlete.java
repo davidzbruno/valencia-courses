@@ -32,7 +32,24 @@ public abstract class InternationalAthlete extends Athlete {
         this.country = country.toUpperCase();
     }
 
+    @Override
     public String toString() {
         return getPassport() + ", " + super.toString();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+
+        if (!(obj instanceof InternationalAthlete)) {
+            return false;
+        }
+
+        InternationalAthlete iObj = (InternationalAthlete) obj;
+
+        return super.equals(obj) && this.getCountry().endsWith(iObj.getCountry())
+                && this.getPassport().equals(iObj.getPassport());
     }
 }

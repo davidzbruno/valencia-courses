@@ -24,4 +24,20 @@ public class GolfPlayer extends Athlete {
     public void doThis() {
         System.out.println("I putt it in the hole.");
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        // If the object is compared with itself then return true
+        if (obj == this) {
+            return true;
+        }
+
+        if (!(obj instanceof GolfPlayer)) {
+            return false;
+        }
+
+        GolfPlayer gObj = (GolfPlayer) obj;
+
+        return super.equals(obj) && this.getMainSponser().equals(gObj.getMainSponser());
+    }
 }

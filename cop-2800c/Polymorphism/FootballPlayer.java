@@ -23,6 +23,22 @@ public class FootballPlayer extends Athlete {
     public void doThis() {
         System.out.println("I tackle something.");
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        // If the object is compared with itself then return true
+        if (obj == this) {
+            return true;
+        }
+
+        if (!(obj instanceof FootballPlayer)) {
+            return false;
+        }
+
+        FootballPlayer fbObj = (FootballPlayer) obj;
+
+        return super.equals(obj) && this.getSpeciality() == fbObj.getSpeciality();
+    }
 }
 
 enum Speciality {

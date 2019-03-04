@@ -6,7 +6,7 @@
 public class test {
     public static void main(String args[]) {
 
-        People people[] = new People[100];
+        Athlete people[] = new Athlete[100];
 
         people[0] = new BaseballPlayer("Hank H. Aaron", 44, "Atlanta Braves", "Right Fielder", 1, "BH_RIGHT");
         people[1] = new FootballPlayer("Terry Paxton Bradshaw", 12, "Pittsburgh Steelers", "Quarterback", "SP_OFFENSE");
@@ -24,7 +24,7 @@ public class test {
         people[6] = new HockeyPlayer("Sidney Crosby", 99, "Pittsburgh Penguins", "Centre", "N/A");
         people[7] = new GolfPlayer("Arnold Palmer", 2, "PGA Tour", "N/A", "Callaway Golf");
 
-        for (Athlete p : people) {
+        for (Athlete a : people) {
             a.doThis();
             System.out.println(a);
         }

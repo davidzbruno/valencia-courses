@@ -31,10 +31,26 @@ public class BaseballPlayer extends Athlete {
         this.batHand = BattingHand.valueOf(batHad);
     }
 
+    @Override
     public void doThis() {
         System.out.println("I hit something.");
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+
+        if (!(obj instanceof BaseballPlayer)) {
+            return false;
+        }
+
+        BaseballPlayer bObj = (BaseballPlayer) obj;
+
+        return super.equals(obj) && this.getBattingPostion() == bObj.getBattingPostion()
+                && this.getBatHand() == bObj.getBatHand();
+    }
 }
 
 enum BattingHand {
