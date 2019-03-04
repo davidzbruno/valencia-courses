@@ -17,7 +17,7 @@ public abstract class InternationalAthlete extends Athlete {
     }
 
     public String getPassport() {
-        return country.substring(0, 2) + passport;
+        return country.substring(0, 2) + "x" + passport;
     }
 
     public String getCountry() {

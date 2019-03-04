@@ -1,3 +1,5 @@
+import java.util.*;
+
 /*
 * File: test.java
 * Name: David Bruno
@@ -54,10 +56,10 @@ public class test {
             option = sc.next();
             switch (option) {
             case "1":
-                command(player);
+                command(people);
                 break;
             case "2":
-                print(player);
+                print(people);
                 break;
             case "exit":
                 System.out.println("Thank you!");
