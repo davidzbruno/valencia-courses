@@ -1,14 +1,27 @@
 import java.util.*;
 
-public class Name{
+public class Name {
     private String firstName;
-    private String middleName;
+    private String middleName = "";
     private String lastName;
+
+    public Name(String fullName) {
+        String[] tempName = fullName.split(" ");
+
+        setFirstName(tempName[0]);
+        setLastName(tempName[1]);
+
+        if (tempName.length == 3) {
+            this.setFirstName(tempName[0]);
+            this.setMiddleName(tempName[1]);
+            this.setLastName(tempName[2]);
+        }
+    }
 
     public Name(String firstName, String lastName) {
         this.setFirstName(firstName);
+        this.setMiddleName("");
         this.setLastName(lastName);
-        middleName = "";
     }
 
     public Name(String firstName, String middleName, String lastName) {
@@ -50,19 +63,20 @@ public class Name{
     }
 
     @Override
-    public boolean equals(Object obj){
-        // If the object is compared with itself then return true   
-        if (obj == this) { 
-            return true; 
-        } 
+    public boolean equals(Object obj) {
+        // If the object is compared with itself then return true
+        if (obj == this) {
+            return true;
+        }
 
-        if (!(obj instanceof Name)  && !(obj instanceof String)) {
-            return false; 
+        if (!(obj instanceof Name) && !(obj instanceof String)) {
+            return false;
         }
 
         Name nObj = (Name) obj;
 
-        return this.getFirstName().equals(nObj.getFirstName()) && this.getMiddleName().equals(nObj.getMiddleName()) && this.getLastName().equals(nObj.getLastName());
-        
+        return this.getFirstName().equals(nObj.getFirstName()) && this.getMiddleName().equals(nObj.getMiddleName())
+                && this.getLastName().equals(nObj.getLastName());
+
     }
 }

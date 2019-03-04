@@ -35,7 +35,25 @@ public class Athlete extends Person {
         System.out.println("...something...");
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        // If the object is compared with itself then return true
+        if (obj == this) {
+            return true;
+        }
+
+        if (!(obj instanceof Athlete)) {
+            return false;
+        }
+
+        Athlete aObj = (Athlete) obj;
+
+        return super.equals(obj) && this.getTeam().equals(aObj.getTeam())
+                && this.getPosition().equals(aObj.getPosition());
+    }
+
+    @Override
     public String toString() {
-        return super.toString() + ", " + team + ", " + position;
+        return super.toString() + ", " + getTeam() + ", " + getPosition();
     }
 }

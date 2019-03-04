@@ -1,12 +1,16 @@
-public abstract class InternationalPlayer extends Athlete {
+/*
+* File: InternationalAthlete.java
+* Name: David Bruno
+* Date: 3/04/19
+*/
+
+public abstract class InternationalAthlete extends Athlete {
     private String passport;
     private String country;
 
     public abstract void immigrate(String country);
 
-    public abstract void emigrate();
-
-    public InternationalPlayer(String name, int age, String team, String position, String counrty, String passport) {
+    public InternationalAthlete(String name, int age, String team, String position, String country, String passport) {
         super(name, age, team, position);
         setCountry(country);
         setPassport(passport);
@@ -25,10 +29,10 @@ public abstract class InternationalPlayer extends Athlete {
     }
 
     public void setCountry(String country) {
-        this.country = country;
+        this.country = country.toUpperCase();
     }
 
     public String toString() {
-        return super.toString() + getPassport();
+        return getPassport() + ", " + super.toString();
     }
 }

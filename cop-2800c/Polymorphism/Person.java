@@ -5,15 +5,15 @@
 */
 
 public class Person {
-    private String name;
-    private int age;
-
-    public Person(String name, int age){
+    private Name name;
+    private int age; 
+    
+    public Person(String name, int age) {
         setName(name);
         setAge(age);
     }
 
-    public String getName() {
+    public Name getName() {
         return name;
     }
 
@@ -22,15 +22,31 @@ public class Person {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = newName(name);
     }
 
     public void setAge(int age) {
         this.age = age;
     }
-    
-    public String toString(){
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+
+        if (!(obj instanceof Person)) {
+            return false;
+        }
+
+        Person pObj = (Person) obj;
+
+        return this.getName().equals(pObj.getName()) && this.getAge() == pObj.getAge();
+    }
+
+    @Override
+    public String toString() {
         return name + ", " + age;
     }
-    
+
 }
