@@ -9,23 +9,53 @@ public class test {
 
     public static void display() {
         System.out.println("--------------------------------------------------------------------------------");
-        System.out.println("------------- [1] Command athletes [2] Print athletes [exit] Exit --------------");
+        System.out.println("--- [1] Compare athletes [2] Command athletes [3] Print athletes [exit] Exit ---");
         System.out.println("--------------------------------------------------------------------------------");
-    }
-
-    public static void addPlayer(Athlete[] arr) {
+        System.out.print("Option: ");
 
     }
 
-    public static void command(Athlete[] arr) {
-        for (Athlete a : arr) {
-            a.doThis();
+    public static <T extends Athlete> void compare(T[] arr) {
+        int matches;
+        for (T a : arr) {
+            if (a != null) {
+                matches = -1;
+                System.out.print(a.getName() + ": ");
+                for (T b : arr) {
+                    if (b != null) {
+                        if (a.equals(b))
+                            matches++;
+                    }
+                }
+                String res = (matches > 0 ? "Matches found." : "No matches");
+                System.out.println(res);
+            }
         }
     }
 
-    public static void print(Object[] arr) {
-        for (Object obj : arr) {
-            System.out.println(obj);
+    // public static <T extends Comparable<T>> void compare(T[] arr) {
+    // List<T> temp = new List<T>(Arrays.asList(arr));
+    // Collections.sort(temp);
+    // arr = temp.toArray(new T[temp.size()]);
+    // for (T a : arr) {
+    // if (a != null)
+    // System.out.println(a);
+    // }
+    // }
+
+    public static <T extends Athlete> void command(T[] arr) {
+        for (T a : arr) {
+            if (a != null) {
+                System.out.print(a.getName() + ": ");
+                a.doThis();
+            }
+        }
+    }
+
+    public static <T> void print(T[] arr) {
+        for (T obj : arr) {
+            if (obj != null)
+                System.out.println(obj);
         }
     }
 
@@ -51,14 +81,18 @@ public class test {
         people[11] = new GolfPlayer("Arnold Palmer", 2, "PGA Tour", "N/A", "Callaway Golf");
 
         people[12] = new KabaddiPlayer("David Bruno", 18, "Orlando-Bangladesh", "Raider", "US", "012345678", true);
+
         do {
             display();
             option = sc.next();
             switch (option) {
             case "1":
-                command(people);
+                compare(people);
                 break;
             case "2":
+                command(people);
+                break;
+            case "3":
                 print(people);
                 break;
             case "exit":

@@ -34,7 +34,7 @@ public abstract class InternationalAthlete extends Athlete {
 
     @Override
     public String toString() {
-        return getPassport() + ", " + super.toString();
+        return super.toString() + ", " + getPassport();
     }
 
     @Override

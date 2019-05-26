@@ -145,16 +145,11 @@ public class Casino{
             machine.setBalance( machine.getBalance() - machine.getJackpotPayout() );
         }
         else if(machine.isWin()){
-            System.out.println("You won $" + machine.getPayout()+ " on the " + machine.getPayout() + " machine.");
+            System.out.println("You won $" + machine.getPayout()+ " on the " + machine.getName() + " machine.");
             player.setBalance( player.getBalance() + machine.getPayout() );
             machine.setBalance( machine.getBalance() - machine.getPayout() );
         }else{
             System.out.println("Sorry. Better luck next time " + player.getName()+ ".");
         }
-
-        System.out.println("Do you want to play again? (y/n)");
-            input = sc.next();
-            if (input.toUpperCase().charAt(0) == 'Y')
-                play(player,machine);
     }
 }

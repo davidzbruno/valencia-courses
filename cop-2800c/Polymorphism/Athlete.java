@@ -4,7 +4,7 @@
 * Date: 3/03/19
 */
 
-public class Athlete extends Person {
+public class Athlete extends Person /* implements Comparable */ {
 
     private String team;
     private String position;
@@ -56,4 +56,20 @@ public class Athlete extends Person {
     public String toString() {
         return super.toString() + ", " + getTeam() + ", " + getPosition();
     }
+
+    // @Override
+    // public boolean compareTo(Object obj){
+    // int res = 0;
+
+    // if (obj == this) {
+    // return true;
+    // }
+
+    // if (!(obj instanceof Athlete)) {
+    // return false;
+    // }
+
+    // res += this.getTeam().compareTo(obj.getTeam());
+
+    // }
 }

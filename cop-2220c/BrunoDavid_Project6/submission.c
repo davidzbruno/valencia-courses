@@ -208,7 +208,7 @@ void brightness(int offset, int imageArray[][MAX_WIDTH], int *height, int *width
             imageArray[row][col] += offset;
         }
     }
-}
+}l
 void truncate(int imageArray[][MAX_WIDTH], int *height, int *width, double *tValue)
 {
     int row = 0;
@@ -269,8 +269,8 @@ int main(void)
     read_pgm_file_into_array(theImageArray, &height, &width, &maxPixel, &tValue, pgmInFileName);
 
     // Test
-    //brightness(50, theImageArray, &height, &width);
-    //truncate(theImageArray, &height, &width, &tValue);
+    brightness(50, theImageArray, &height, &width);
+    truncate(theImageArray, &height, &width, &tValue);
     crop(theImageArray, &height, &width, &tValue);
 
     //Transfer the current values in theImageArray back to disk
