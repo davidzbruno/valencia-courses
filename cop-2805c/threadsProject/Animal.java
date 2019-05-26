@@ -7,7 +7,6 @@ public class Animal implements Runnable{
     private Food food;
 
     private final int RACE_LENGTH = 100;
-
     private static boolean isWinner = false;
 
 
