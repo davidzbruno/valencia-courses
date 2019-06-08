@@ -152,25 +152,4 @@ public class StackCalc {
         else if(operator.equals("*")) return operand1*operand2;
         else return operand1/operand2;
     }
-
-    public static void main(String[] args) {
-        // System.out.println("Enter Infix Expression");
-
-        // Scanner sc = new Scanner(System.in);
-        // String expression = sc.nextLine();
-
-        // // expression = "3+5*9";
-        // StackCalc stackCalc = new StackCalc();
-        // System.out.printf("Postfix Expression: %s\n",stackCalc.toPostfix(expression));
-        // System.out.printf("Answer: %.2f\n",stackCalc.answer());
-
-        StackCalc stackCalc = new StackCalc();
-        String[] values = {"3", "5", "9", "*", "+"};
-        for(int i = 0; i < 5; i++) {
-            stackCalc.stack.push(values[i]);
-        }
-        System.out.println(stackCalc.stack);
-        System.out.println(stackCalc.answer());
-
-    }
 }
